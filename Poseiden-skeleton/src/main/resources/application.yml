@@ -1,0 +1,27 @@
+
+spring:
+  messages:
+    basename: messages
+  jpa:    
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/poseidon?useUnicode=true&characterEncoding=utf8&useSSL=false&&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password:  
+logging:  level:    org.springframework: INFO
+
+
+  
+server:
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        max-age: 1800
+        #http-only: true
+        #secure: true
