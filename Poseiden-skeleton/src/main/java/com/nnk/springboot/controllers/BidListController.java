@@ -55,7 +55,7 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
     	if(result.hasErrors()) {
-    		return "bidList/update/"+id;
+    		return "bidList/update";
 		}
     	service.updateBid(id, bidList);
         return "redirect:/bidList/list";

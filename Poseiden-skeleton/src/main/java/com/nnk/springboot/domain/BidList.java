@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "bidlist")
@@ -14,7 +15,9 @@ public class BidList {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer bidListId;
+	@NotNull(message = "Account is mandatory")
 	private String account;
+	@NotNull(message = "Type is mandatory")
 	private String type;
 	private Double bidQuantity;
 	private Double askQuantity;

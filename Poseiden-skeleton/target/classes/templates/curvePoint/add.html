@@ -8,17 +8,59 @@
 </head>
 <body>
 <div class="container">
-
+	<th:block th:include="fragments/menu-bar::menu-bar"></th:block>
 	<div class="row">
 		<h2>Add New Curve Point</h2>
 	</div>
 
 	<div class="row">
 		<form action="#" th:action="@{/curvePoint/validate}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to input the values of CurvePoint, there are 2 buttons: Save data and Cancel to the list CurvePoint
-			 -->
+			<div class="form-group row ">
+				<div class="col-sm-8">
+					<span class="text-danger" th:errors="*{global}"> </span>
+				</div>
+			</div>
+			<div class="form-group row ">
+				<label for="curveId" class="col-sm-2 col-form-label">Curve Id</label>
+				<div class="col-sm-4">
+					<input th:field="*{curveId}" type="text" class="form-control" required="required"
+						placeholder="Curve Id">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{curveId}"> </span>
+				</div>
+			</div>
+			
+			<div class="form-group row ">
+				<label for="term" class="col-sm-2 col-form-label">Term</label>
+				<div class="col-sm-4">
+					<input th:field="*{term}" type="text" class="form-control" required="required"
+						placeholder="term">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{term}"> </span>
+				</div>
+			</div>
+			
+			<div class="form-group row ">
+				<label for="value" class="col-sm-2 col-form-label">Value</label>
+				<div class="col-sm-4">
+					<input th:field="*{value}" type="number" class="form-control" required="required"
+						placeholder="quantity">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{value}"> </span>
+				</div>
+			</div>
 
+			<div class="form-group row">
+				<div class="">
+					<button type="submit" class="btn btn-primary btn-danger">Cancel</button>
+				</div>
+				<div class="col-sm-6">
+					<button type="submit" class="btn btn-primary">Add CurvePoint</button>
+				</div>
+			</div>
 		</form>
 	</div>
 
