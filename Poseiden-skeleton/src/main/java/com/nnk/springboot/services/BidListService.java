@@ -3,6 +3,7 @@
  */
 package com.nnk.springboot.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -10,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.dtos.BidListDto;
-import com.nnk.springboot.dtos.create.BidListCreateDto;
 import com.nnk.springboot.repositories.BidListRepository;
 import com.nnk.springboot.services.mappers.BidListMapper;
 
@@ -31,6 +31,7 @@ public class BidListService {
 	}
 	
 	public BidListDto createBid(BidList bid) {
+		bid.setCreationDate(new Timestamp(System.currentTimeMillis()));
 		return bidListMapper.toDto(bidListRepository.save(bid));
 	}
 	
@@ -43,10 +44,11 @@ public class BidListService {
 	}
 	
 	public BidList getById(Integer id) {
-		return bidListRepository.findById(id).orElse(null);
+		return bidListRepository.findByBidListId(id).orElse(null);
 	}
 	
 	public BidList updateBid(Integer id, BidList updatedEntity) {
+		updatedEntity.setBidListId(id);
 		return bidListRepository.save(updatedEntity);
 	}
 }

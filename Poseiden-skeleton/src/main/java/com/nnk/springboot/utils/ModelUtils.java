@@ -9,7 +9,7 @@ package com.nnk.springboot.utils;
  */
 public class ModelUtils {
 
-	public static final String MODEL_LIST_BIDLIST = "bidlist_list";
+	public static final String MODEL_LIST_BIDLIST = "bidList_list";
 	
-	public static final String MODEL_BIDLIST = "bidlist";
+	public static final String MODEL_BIDLIST = "bidList";
 }
