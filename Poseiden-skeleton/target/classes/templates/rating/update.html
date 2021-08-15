@@ -8,16 +8,70 @@
 </head>
 <body>
 <div class="container">
-
+	<th:block th:include="fragments/menu-bar::menu-bar"></th:block>
 	<div class="row">
 		<h2>Update Rating</h2>
 	</div>
 
 	<div class="row">
 		<form action="#" th:action="@{/rating/update/{id}(id=${rating.id})}" th:object="${rating}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to edit the values of Rating, there are 2 buttons: Update data and Cancel to the Rating
-			 -->
+			<div class="form-group row ">
+				<div class="col-sm-8">
+					<span class="text-danger" th:errors="*{global}"> </span>
+				</div>
+			</div>
+			<div class="form-group row ">
+				<label for="moodysRating" class="col-sm-2 col-form-label">Moodys Rating</label>
+				<div class="col-sm-4">
+					<input th:field="*{moodysRating}" type="text" class="form-control" required="required"
+						placeholder="Moodys Rating">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{moodysRating}"> </span>
+				</div>
+			</div>
+			
+			<div class="form-group row ">
+				<label for="sandPRating" class="col-sm-2 col-form-label">SandP Rating</label>
+				<div class="col-sm-4">
+					<input th:field="*{sandPRating}" type="text" class="form-control" required="required"
+						placeholder="SandP Rating">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{sandPRating}"> </span>
+				</div>
+			</div>
+			
+			<div class="form-group row ">
+				<label for="fitchRating" class="col-sm-2 col-form-label">Fitch Rating</label>
+				<div class="col-sm-4">
+					<input th:field="*{fitchRating}" type="text" class="form-control" required="required"
+						placeholder="Fitch Rating">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{fitchRating}"> </span>
+				</div>
+			</div>
+			
+			<div class="form-group row ">
+				<label for="orderNumber" class="col-sm-2 col-form-label">Order Number</label>
+				<div class="col-sm-4">
+					<input th:field="*{orderNumber}" type="number" class="form-control" required="required"
+						placeholder="OrderNumber">
+				</div>
+				<div class="col-sm-4">
+					<span class="text-danger" th:errors="*{orderNumber}"> </span>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="">
+					<button type="submit" class="btn btn-primary btn-danger">Cancel</button>
+				</div>
+				<div class="col-sm-6">
+					<button type="submit" class="btn btn-primary">Update Rating</button>
+				</div>
+			</div>
 		</form>
 	</div>
 
