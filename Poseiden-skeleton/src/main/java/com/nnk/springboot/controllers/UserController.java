@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/user/add")
-    public String addUser(PoseidonUser bid) {
+    public String addUser(PoseidonUser poseidonUser) {
         return "user/add";
     }
 
