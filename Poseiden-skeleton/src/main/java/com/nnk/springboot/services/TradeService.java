@@ -22,13 +22,13 @@ public class TradeService {
 
 	private final TradeRepository tradeRepository;
 	
-	public TradeService (TradeRepository curvePointRepository) {
-		this.tradeRepository = curvePointRepository;
+	public TradeService (TradeRepository tradeRepository) {
+		this.tradeRepository = tradeRepository;
 	}
 	
-	public Trade createTrade(Trade bid) {
-		bid.setCreationDate(new Timestamp(System.currentTimeMillis()));
-		return tradeRepository.save(bid);
+	public Trade createTrade(Trade trade) {
+		trade.setCreationDate(new Timestamp(System.currentTimeMillis()));
+		return tradeRepository.save(trade);
 	}
 	
 	public void deleteTrade(Integer id) {

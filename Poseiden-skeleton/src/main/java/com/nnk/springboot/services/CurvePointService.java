@@ -26,9 +26,9 @@ public class CurvePointService {
 		this.curvePointRepository = curvePointRepository;
 	}
 	
-	public CurvePoint createCurvePoint(CurvePoint bid) {
-		bid.setCreationDate(new Timestamp(System.currentTimeMillis()));
-		return curvePointRepository.save(bid);
+	public CurvePoint createCurvePoint(CurvePoint curvePoint) {
+		curvePoint.setCreationDate(new Timestamp(System.currentTimeMillis()));
+		return curvePointRepository.save(curvePoint);
 	}
 	
 	public void deleteBid(Integer id) {

@@ -26,4 +26,8 @@ public class ModelUtils {
 	public static final String MODEL_TRADE_LIST = "tradeList";
 	
 	public static final String MODEL_TRADE = "trade";
+
+	public static final String MODEL_RULENAME_LIST = "ruleNameList";
+	
+	public static final String MODEL_RULENAME = "ruleName";
 }

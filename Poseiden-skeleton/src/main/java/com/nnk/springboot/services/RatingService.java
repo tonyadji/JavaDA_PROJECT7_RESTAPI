@@ -21,8 +21,8 @@ public class RatingService {
 
 	private final RatingRepository ratingRepository;
 	
-	public RatingService (RatingRepository curvePointRepository) {
-		this.ratingRepository = curvePointRepository;
+	public RatingService (RatingRepository ratingRepository) {
+		this.ratingRepository = ratingRepository;
 	}
 	
 	public Rating createRating(Rating rating) {

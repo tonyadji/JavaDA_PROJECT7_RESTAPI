@@ -8,21 +8,7 @@
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<div class="col-6">
-			<a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
-			<a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
-			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
-			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
-			<a href="/ruleName/list">Rule</a>
-		</div>
-		<div class="col-6 text-right">
-			Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
-			<form th:action="@{/app-logout}" method="POST">
-				<input type="submit" value="Logout"/>
-			</form>
-		</div>
-	</div>
+	<th:block th:include="fragments/menu-bar::menu-bar"></th:block>
 	<div class="row"><h2>Rule List</h2></div>
 	<div class="row">
 		<a href="/ruleName/add" class="btn btn-primary btn-sm">Add New</a>
@@ -40,7 +26,19 @@
 				</tr>
 			</thead>
 			<tbody>
-			<!-- TODO: Show all RuleName to the table, the Action column will have Edit & Delete buttons -->
+				<tr th:each="ruleName :${ruleNameList}">
+		            <td th:text="${ruleName.id}">Id</td>
+		            <td th:text="${ruleName.name}">Name</td>
+		            <td th:text="${ruleName.description}">Description</td>
+		            <td th:text="${ruleName.json}">Json </td>
+		            <td th:text="${ruleName.template}">Template</td>
+		            <td th:text="${ruleName.sqlStr}">Sql</td>
+		            <td th:text="${ruleName.sqlPart}">Sql Part</td>
+		            <td>
+		            	<a href="#" th:href="@{/ruleName/update/}+${ruleName.id}">Edit</a>&nbsp;|&nbsp;
+						<a href="#" th:href="@{/ruleName/delete/}+${ruleName.id}">Delete</a>&nbsp;
+		            </td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
