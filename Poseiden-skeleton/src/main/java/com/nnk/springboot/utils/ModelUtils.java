@@ -22,4 +22,8 @@ public class ModelUtils {
 	public static final String MODEL_RATING_LIST = "ratingList";
 	
 	public static final String MODEL_RATING = "rating";
+
+	public static final String MODEL_TRADE_LIST = "tradeList";
+	
+	public static final String MODEL_TRADE = "trade";
 }

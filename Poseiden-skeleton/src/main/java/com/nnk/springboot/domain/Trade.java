@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -16,7 +17,9 @@ public class Trade {
 	@Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer tradeId;
+	@NotEmpty
 	private String account;
+	@NotEmpty
 	private String type;
 	private Double buyQuantity;
 	private Double sellQuantity;
@@ -37,6 +40,9 @@ public class Trade {
 	private String sourceListId;
 	private String side;
 	
+	public Trade () {
+		
+	}
 	
 	public Trade(String account, String type) {
 		super();
