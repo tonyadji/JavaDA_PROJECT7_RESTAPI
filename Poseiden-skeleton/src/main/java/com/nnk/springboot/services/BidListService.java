@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.dtos.BidListDto;
 import com.nnk.springboot.repositories.BidListRepository;
-import com.nnk.springboot.services.mappers.BidListMapper;
 
 /**
  * @author tonys
@@ -23,16 +21,14 @@ import com.nnk.springboot.services.mappers.BidListMapper;
 public class BidListService {
 
 	private final BidListRepository bidListRepository;
-	private final BidListMapper bidListMapper;
 	
-	public BidListService (BidListRepository bidListRepository, BidListMapper bidListMapper) {
+	public BidListService (BidListRepository bidListRepository) {
 		this.bidListRepository = bidListRepository;
-		this.bidListMapper = bidListMapper;
 	}
 	
-	public BidListDto createBid(BidList bid) {
+	public BidList createBid(BidList bid) {
 		bid.setCreationDate(new Timestamp(System.currentTimeMillis()));
-		return bidListMapper.toDto(bidListRepository.save(bid));
+		return bidListRepository.save(bid);
 	}
 	
 	public void deleteBid(Integer id) {

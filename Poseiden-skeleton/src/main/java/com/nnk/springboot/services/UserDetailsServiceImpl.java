@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.nnk.springboot.domain.PoseidonUser;
+import com.nnk.springboot.repositories.UserRepository;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -26,15 +27,15 @@ import com.nnk.springboot.domain.PoseidonUser;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	/** The user service. */
-	private final PoseidonUserService userService;
+	private final UserRepository userRepository;
 	
 	/**
 	 * Instantiates a new user details service impl.
 	 *
 	 * @param userService the user service
 	 */
-	public UserDetailsServiceImpl(PoseidonUserService userService) {
-		this.userService = userService;
+	public UserDetailsServiceImpl(UserRepository userService) {
+		this.userRepository = userService;
 	}
 	
 	/**
@@ -46,7 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		final PoseidonUser user = userService.findByUsername(username);
+		final PoseidonUser user = userRepository.findByUsername(username).orElse(null);
 		if(user == null) throw new UsernameNotFoundException(username);
 		final Collection<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(user.getRole()));

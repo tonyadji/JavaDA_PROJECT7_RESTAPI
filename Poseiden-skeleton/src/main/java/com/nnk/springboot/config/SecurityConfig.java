@@ -39,27 +39,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN");
-		//auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder);
+		//auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN");
+		auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.authorizeRequests()
-		.antMatchers("/login","/register","/webjars/**").permitAll()
+		.antMatchers("/user/*").hasAuthority("ADMIN")
+		.antMatchers("/app/login","/register","/css/**").permitAll()
 		.anyRequest().authenticated()
 		
 		.and()
+		
 		.formLogin()
-		//.loginPage("/login")		
-		//.loginProcessingUrl("/login")
-		//.failureUrl("/login?error=true")		
+		.loginPage("/app/login")		
+		.loginProcessingUrl("/app/login")
+		.failureUrl("/app/login?error=true")		
 		.and()
+		
 		.logout()
 		.clearAuthentication(true)
 		.invalidateHttpSession(true)
-		.logoutSuccessUrl("/login").deleteCookies("JSESSIONID")		
+		.logoutSuccessUrl("/app/login").deleteCookies("JSESSIONID")		
 		.and()
 		.rememberMe().key("$jiahlqf_0Ypeai6a29tT-Tjm1awxOHE4");
 		
